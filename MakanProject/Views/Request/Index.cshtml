@@ -1,0 +1,52 @@
+﻿@model IEnumerable<MakanProject.Models.Request>
+
+@{
+    ViewData["Title"] = "Request";
+}
+
+<h1>Index</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Content)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @if (User.IsInRole("Admin")){
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Content)
+            </td>
+           
+            <td>
+               
+                
+                <a asp-action="Delete" asp-route-id="@item.RequestId">Done</a>
+            </td>
+        </tr>
+        }
+        </tbody>
+    }
+    else
+    {
+      <tr><td>Your Request Has Been Submitted</td></tr>  
+    }
+</table>

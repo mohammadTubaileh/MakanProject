@@ -1,0 +1,64 @@
+﻿@model MakanProject.Models.Location
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Location</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCp2mrkh41Ly0-3TWbK_iUk_KzlVoIEeAQ&callback=initMap" async defer></script>
+    <style>
+        #map {
+            height: 200px; /* Set the height of the map */
+            width: 100%; /* Set the width of the map */
+        }
+    </style>
+</head>
+<body>
+    <div class="form-group">
+        <label asp-for="LocationName" class="control-label"></label>
+        <input asp-for="LocationName" class="form-control" />
+        <span asp-validation-for="LocationName" class="text-danger"></span>
+    </div>
+    <h2>Select Your Location</h2>
+    <div id="map"></div>
+    <form id="locationForm" method="post" action="/Locate/SaveLocation">
+        <input type="hidden" id="latitude" name="latitude" />
+        <input type="hidden" id="longitude" name="longitude" />
+        <button type="submit">Save Location</button>
+    </form>
+
+    <script>
+        let map;
+        let marker;
+
+        function initMap() {
+            const initialLocation = { lat: -34.397, lng: 150.644 }; // Default location
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 8,
+                center: initialLocation,
+            });
+
+            // Create a marker
+            marker = new google.maps.Marker({
+                position: initialLocation,
+                map: map,
+                draggable: true, // Allow the marker to be draggable
+            });
+
+            // Update the latitude and longitude inputs on marker drag
+            google.maps.event.addListener(marker, 'dragend', function (event) {
+                const lat = event.latLng.lat();
+                const lng = event.latLng.lng();
+                document.getElementById('latitude').value = lat;
+                document.getElementById('longitude').value = lng;
+            });
+
+            // Update the input values when clicking on the map
+            google.maps.event.addListener(map, 'click', function (event) {
+                marker.setPosition(event.latLng);
+                document.getElementById('latitude').value = event.latLng.lat();
+                document.getElementById('longitude').value = event.latLng.lng();
+            });
+        }
+    </script>
+</body>
+</html>

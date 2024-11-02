@@ -1,0 +1,71 @@
+﻿@model MakanProject.Models.Villa
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Villa</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillaName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillaName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillaDescription)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillaDescription)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillaNumberOfRooms)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillaNumberOfRooms)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillaNumberOfBathrooms)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillaNumberOfBathrooms)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillaPricePerNight)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillaPricePerNight)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillaLocation)
+        </dt>
+        
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillaLocation)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillaDateAvailable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillaDateAvailable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.VillaImageUrl)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.VillaImageUrl)
+        </dd>
+    </dl>
+</div>
+<div>
+    <div> <a asp-action="Create" asp-controller="Bookings" asp-route-villaId="@Model?.VillaId" class="btn btn-primary">Reservation</a></div>
+    <div><a asp-action="ShowLocation" asp-controller="Locate" class="btn btn-primary ">Location</a></div>
+    <a asp-action="Edit" asp-route-id="@Model?.VillaId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+    
+    
+</div>

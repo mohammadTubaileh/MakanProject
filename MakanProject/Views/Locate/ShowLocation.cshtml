@@ -1,0 +1,44 @@
+﻿@model MakanProject.Models.Location
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Location</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+    <style>
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Saved Location</h1>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            // Use the latitude and longitude from the model
+            const savedLocation = {
+                lat: @Model.Latitude,
+                lng: @Model.Longitude
+            };
+
+            // Initialize the map
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 15,
+                center: savedLocation,
+            });
+
+            // Place a marker at the saved location
+            new google.maps.Marker({
+                position: savedLocation,
+                map: map,
+                title: "Saved Location",
+            });
+        }
+    </script>
+</body>
+</html>

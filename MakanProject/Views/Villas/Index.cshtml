@@ -1,0 +1,83 @@
+﻿@model IEnumerable<MakanProject.Models.Villa>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.VillaName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VillaDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VillaNumberOfRooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VillaNumberOfBathrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VillaPricePerNight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VillaLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VillaDateAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.VillaImageUrl)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @if (User.IsInRole("Admin")){
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VillaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VillaDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VillaNumberOfRooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VillaNumberOfBathrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VillaPricePerNight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VillaLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VillaDateAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.VillaImageUrl)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.VillaId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.VillaId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.VillaId">Delete</a>
+            </td>
+        </tr>
+        }
+        </tbody>
+    }
+    else
+    {
+      <tr><td>Your Request Has Been Submitted</td></tr>  
+    }
+</table>

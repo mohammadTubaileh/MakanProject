@@ -1,0 +1,101 @@
+﻿@model IEnumerable<MakanProject.Models.Apartment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentLocation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentNumberOfRooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentNumberOfBathrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentPricePerNight)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentDateAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApartmentImageUrl)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    @if (User.IsInRole("Admin"))
+    {
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentNumberOfRooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentNumberOfBathrooms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentPricePerNight)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentDateAvailable)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApartmentImageUrl)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ApartmentId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ApartmentId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ApartmentId">Delete</a>
+            </td>
+        </tr>
+}
+        </tbody>
+    }else
+    {
+      <tr><td>You Request Has Been Submitted</td></tr>  
+    }
+</table>

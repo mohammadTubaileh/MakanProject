@@ -1,0 +1,72 @@
+﻿    @model MakanProject.Models.Villa
+
+    @{
+        ViewData["Title"] = "Create";
+    }
+
+    <h1>Create</h1>
+
+    <h4>Villa</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" asp-controller="villas" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="VillaName" class="control-label"></label>
+                    <input asp-for="VillaName" class="form-control" />
+                    <span asp-validation-for="VillaName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VillaDescription" class="control-label"></label>
+                    <input asp-for="VillaDescription" class="form-control" />
+                    <span asp-validation-for="VillaDescription" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VillaNumberOfRooms" class="control-label"></label>
+                    <input asp-for="VillaNumberOfRooms" class="form-control" />
+                    <span asp-validation-for="VillaNumberOfRooms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VillaNumberOfBathrooms" class="control-label"></label>
+                    <input asp-for="VillaNumberOfBathrooms" class="form-control" />
+                    <span asp-validation-for="VillaNumberOfBathrooms" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VillaPricePerNight" class="control-label"></label>
+                    <input asp-for="VillaPricePerNight" class="form-control" />
+                    <span asp-validation-for="VillaPricePerNight" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VillaLocation" class="control-label"></label>
+                    <input asp-for="VillaLocation" class="form-control" />
+                    <span asp-validation-for="VillaLocation" class="text-danger"></span>
+                
+                    <div><a asp-action="SaveLocation" asp-controller="Locate" class="btn btn-primary ">Add Location</a></div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VillaDateAvailable" class="control-label"></label>
+                    <input asp-for="VillaDateAvailable" class="form-control" />
+                    <span asp-validation-for="VillaDateAvailable" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Bookings" class="control-label"></label>
+                    <input asp-for="Bookings" class="form-control" />
+                    <span asp-validation-for="Bookings" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="ImageUpload" class="control-label">Upload Image</label>
+                    <input type="file" id="ImageUpload" name="ImageUpload" class="form-control" accept="image/*" />
+                    <span asp-validation-for="VillaImageUrl" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>      
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+

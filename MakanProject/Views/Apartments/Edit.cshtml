@@ -1,0 +1,81 @@
+﻿@model MakanProject.Models.Apartment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Apartment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ApartmentId" />
+            <div class="form-group">
+                <label asp-for="ApartmentName" class="control-label"></label>
+                <input asp-for="ApartmentName" class="form-control" />
+                <span asp-validation-for="ApartmentName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentDescription" class="control-label"></label>
+                <input asp-for="ApartmentDescription" class="form-control" />
+                <span asp-validation-for="ApartmentDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentLocation" class="control-label"></label>
+                <input asp-for="ApartmentLocation" class="form-control" />
+                <span asp-validation-for="ApartmentLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentNumberOfRooms" class="control-label"></label>
+                <input asp-for="ApartmentNumberOfRooms" class="form-control" />
+                <span asp-validation-for="ApartmentNumberOfRooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentNumberOfBathrooms" class="control-label"></label>
+                <input asp-for="ApartmentNumberOfBathrooms" class="form-control" />
+                <span asp-validation-for="ApartmentNumberOfBathrooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentPricePerNight" class="control-label"></label>
+                <input asp-for="ApartmentPricePerNight" class="form-control" />
+                <span asp-validation-for="ApartmentPricePerNight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentDateAvailable" class="control-label"></label>
+                <input asp-for="ApartmentDateAvailable" class="form-control" />
+                <span asp-validation-for="ApartmentDateAvailable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentImageUrl" class="control-label"></label>
+                <input asp-for="ApartmentImageUrl" class="form-control" />
+                <span asp-validation-for="ApartmentImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsActive" /> @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreationDate" class="control-label"></label>
+                <input asp-for="CreationDate" class="form-control" />
+                <span asp-validation-for="CreationDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
